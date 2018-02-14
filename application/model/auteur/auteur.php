@@ -49,5 +49,8 @@ class auteur
     }
 
 
+    public function getNOMCOMPLETAUTEUR() {
+        return $this->PRENOMAUTEUR . ' ' . $this->NOMAUTEUR;
+    }
 
 }

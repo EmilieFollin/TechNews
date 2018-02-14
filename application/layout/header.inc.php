@@ -1,18 +1,45 @@
-<?php
+ <?php
 
     #importation des classes
     use application\model\categorie\categorieDb;
+    use application\model\tags\tagsDb;
+    use application\model\article\articleDb;
 
     #Recuperation des catégories du site
     $categorieDb = new categorieDb();
     $categorie = $categorieDb->fetchAll();
 
     #pour tester
-    $this->debug($categorie);
+    # $this->debug($categorie);
+
+     #Recuperation des tags du site
+     $tagsDb = new tagsDb();
+     $tags = $tagsDb->fetchAll();
+
+    #pour tester
+    # $this->debug($tags);
+
+
+ $articleDb = new ArticleDb;
+ $sidebar = $articleDb->fetchAll(
+     null,
+     'DATECREATIONARTICLE DESC',
+     5
+
+ );
+
+ #$this->debug($sidebar);
+
+
+ #Recuperation des Articles en position "special"
+ $special  =$articleDb->fetchAll('SPECIALARTICLE = 1');
 
 
 
-?>
+
+
+ ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
