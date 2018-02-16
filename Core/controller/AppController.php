@@ -39,6 +39,11 @@ class AppController
 
     }
 
+    protected function renderJson(array $param) {
+        header('Content-Type: application/json');
+        echo json_encpde($param);
+    }
+
 
     /**
      * renvoi le tableau de paramètre de la vue
@@ -60,7 +65,7 @@ class AppController
      * @param array $params
      */
 
-    public function debug(Array $params = [] ) {
+    public function debug($params = [] ) {
         if(empty($params)) :
             $params = $this ->_viewsparams;
         endif;

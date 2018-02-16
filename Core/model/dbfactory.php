@@ -21,4 +21,28 @@ class dbfactory
         #On return $PDO
         return $pdo;
     }
+
+    /**
+     * Crée une instance de Idiorm ORM
+     */
+
+    public static function IdiormFactory() {
+
+        #Initialisation de Idiorm
+        ORM::configure('mysql:host='.DBHOST.';dbname='.DBNAME);
+        ORM::configure('username', DBUSER);
+        ORM::configure('password', DBPASW);
+
+        /**
+         * configuration de la clé primaire de chaque table
+         * cette configuration n'est nécéssaire que si les clé primaries sont differentes de 'ID'
+         * https://idiorm.readthedocs.io/en/latest/configuration.html#setup         *
+         */
+
+        ORM::configure('id_column_overrides', array(
+            'article' => 'IDARTICLE',
+            'view_articles' => 'IDARTICLE',
+        ));
+
+    }
 }

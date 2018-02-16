@@ -43,15 +43,15 @@
 
         <?php endif; ?>
 
-        <!--        <div class="paging">-->
-        <!--            <a href="#">Prev</a>-->
-        <!--            <a href="#" class="current">1</a>-->
-        <!--            <a href="#">2</a>-->
-        <!--            <a href="#">3</a>-->
-        <!--            <a href="#">4</a>-->
-        <!--            <a href="#">5</a>-->
-        <!--            <a href="#">Next</a>-->
-        <!--        </div>-->
+               <div class="paging">
+                   <a href="#">Prev</a>
+                   <a href="#" class="current">1</a>
+                   <a href="#">2</a>
+                   <a href="#">3</a>
+                   <a href="#">4</a>
+                   <a href="#">5</a>
+                   <a href="#">Next</a>
+               </div>
 
     </div>
 

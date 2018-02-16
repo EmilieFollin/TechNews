@@ -11,6 +11,8 @@ namespace application\controller;
 
 use application\model\article\articleDb;
 use Core\Controller\AppController;
+use Core\model\dbfactory;
+use Core\model\ORM;
 
 class NewsController extends AppController
 {
@@ -68,6 +70,32 @@ class NewsController extends AppController
             'articles' => $articles
         ]);
     }
+
+    public function idiormAction() {
+        #recupêration des catégories
+        dbfactory::IdiormFactory();
+        $categorie  = ORM::for_table('categorie')->find_result_set();
+        #find_array();
+
+
+        $this->renderJson($categorie);
+
+        foreach ( $categories as $categorie ) :
+            echo $categorie->LIBELLECATEGORIE . '<br>';
+        endforeach;
+
+
+        #afficher la liste des auteurs du site dans un tableau HTML
+        dbfactory::IdiormFactory();
+        $auteur = ORM::for_table('auteur')->find_result_set();
+
+        $this->renderJson($auteur);
+
+        foreach ($auteurs as $auteur) :
+            echo $auteur->NOMCOMPLET . '<br>';
+        endforeach;
+    }
+
     public function articleAction() {
         $this->render('news/article');
     }
