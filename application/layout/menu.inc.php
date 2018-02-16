@@ -1,11 +1,21 @@
+<?php
+#Je recupere mon action
+$current = ucfirst($this->getAction());
+
+?>
+
 <nav class="menu-res hidden-lg hidden-md ">
     <div class="menu-res-inner">
         <ul>
-            <?php foreach ($categorie as $categories): ?>
-                <li><a href="<?= PATH_PUBLIC .'/' . $categories->getROUTECATEGORIE() ?>">
+            <?php
+            use application\model\categorie\categorie;
 
-                        <?= $categories->getLIBELLECATEGORIE() ?> </a></li>
-
+            foreach ($categories as $categorie) : ?>
+                <li <?= ($categorie->getLIBELLECATEGORIE() == $current) ? 'class="current"' : null ?> >
+                    <a href="<?= PATH_PUBLIC . '/' . $categorie->getROUTECATEGORIE() ?>">
+                        <?= $categorie->getLIBELLECATEGORIE() ?>
+                    </a>
+                </li>
             <?php endforeach; ?>
         </ul>
     </div>
@@ -30,9 +40,11 @@
             </div>
             <ul class="hidden-sm hidden-xs">
                 <?php foreach ($categorie as $categories): ?>
-                    <li><a href="<?= PATH_PUBLIC .'/' . $categories->getROUTECATEGORIE() ?>">
+                    <li <?= ($categories->getLIBELLECATEGORIE() == $current) ? 'class="current"' : null ?> >
+                        <a href="<?= PATH_PUBLIC .'/' . $categories->getROUTECATEGORIE() ?>">
 
-                            <?= $categories->getLIBELLECATEGORIE() ?> </a></li>
+                            <?= $categories->getLIBELLECATEGORIE() ?> </a>
+                    </li>
 
                 <?php endforeach; ?>
             </ul>

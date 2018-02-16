@@ -38,8 +38,16 @@
                         </a>
                         <h3><a href="#"><?= $article->getTITREARTICLE(); ?></a></h3>
 
-                       
 
+                        <div class="meta-post">
+                            <a href="#">
+                                <?= $article->getAUTEUROBJ()->getNOMCOMPLET() ?>
+                            </a>
+                            <em></em>
+                            <span>
+                                <?= $article->getDATECREATIONARTICLE() ?>
+                            </span>
+                        </div>
                     </li>
                 <?php endforeach; ?>
 

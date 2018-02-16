@@ -69,4 +69,14 @@ class AppController
             print_r($params);
         echo' </pre>';
     }
+
+    /**
+     * verifie l'existance de valeur dans $_get
+     */
+    public function getAction() {
+        empty($_GET['action']) ? 'accueil' : $_GET['action'];
+    }
+
+
+
 }

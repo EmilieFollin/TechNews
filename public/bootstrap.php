@@ -3,7 +3,7 @@
 # Quelques constantes utiles
 
 define('PATH_ROOT', dirname(__DIR__));
-define('PATH_PUBLIC', '/TechNews/public/');
+define('PATH_PUBLIC',  '/TechNews/public');
 define('PATH_APPLICATION', PATH_ROOT . '/application');
 define('PATH_LAYOUT', PATH_APPLICATION . '/layout');
 define('PATH_VIEWS', PATH_APPLICATION. '/views');

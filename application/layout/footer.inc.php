@@ -86,6 +86,7 @@
 <script src="<?= PATH_PUBLIC ?>/js/jquery.min.js"></script>
 <script src="<?= PATH_PUBLIC ?>/js/bootstrap.js"></script>
 <script src="<?= PATH_PUBLIC ?>/js/owl.carousel.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js" integrity="sha256-ABVkpwb9K9PxubvRrHMkk6wmWcIHUE9eBxNZLXYQ84k=" crossorigin="anonymous"></script>
 <script src="<?= PATH_PUBLIC ?>/js/main.js"></script>
 </body>
 <?= PATH_PUBLIC ?>
