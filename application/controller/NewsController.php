@@ -74,11 +74,11 @@ class NewsController extends AppController
     public function idiormAction() {
         #recupêration des catégories
         dbfactory::IdiormFactory();
-        $categorie  = ORM::for_table('categorie')->find_result_set();
+        $categories  = ORM::for_table('categorie')->find_result_set();
         #find_array();
 
 
-        $this->renderJson($categorie);
+        $this->renderJson($categories);
 
         foreach ( $categories as $categorie ) :
             echo $categorie->LIBELLECATEGORIE . '<br>';
@@ -89,14 +89,53 @@ class NewsController extends AppController
         dbfactory::IdiormFactory();
         $auteur = ORM::for_table('auteur')->find_result_set();
 
-        $this->renderJson($auteur);
+        $this->renderJson($auteurs);
 
         foreach ($auteurs as $auteur) :
-            echo $auteur->NOMCOMPLET . '<br>';
+            echo '<td>'. $auteur->IDAUTEUR . '</td>';
+            echo '<td>'. $auteur->PRENOMAUTEUR . '</td>';
+            echo '<td>'. $auteur->NOMAUTEUR . '</td>';
+            echo '<td>'. $auteur->EMAILAUTEUR . '</td>';
         endforeach;
     }
 
     public function articleAction() {
-        $this->render('news/article');
+        # http://localhost/technews/public/article/1-slug-de-mon-article.html
+
+        # Récupération de l'IDARTICLE
+        $idarticle = $_GET['idarticle'];
+
+        # Récupération de l'Article
+        $article = ORM::for_table('view_articles')->find_one($idarticle);
+
+        # Récupération des Articles de la Catégorie (suggestions)
+        $suggestion = ORM::for_table('view_articles')
+
+
+        # Je récupère uniquement, les articles de la même
+        # catégorie que mon article
+        -> where('IDCATEGORIE', $article->IDCATEGORIE)
+
+        # Sauf mon article en cours
+        ->where_not_equal('IDARTICLE', $idarticle)
+
+        # 3 articles maximum
+        ->limit(3)
+
+        # Par ordre décroissant
+        -> order_by_desc('IDARTICLE')
+
+        # Je récupère les résultats
+        -> find_result_set();
+
+        # Transmission à la Vue.
+
+        $this->render('news/article', [
+            'article' => $article,
+            'suggestions' => $suggestions,
+        ]);
     }
+
+
+
 }

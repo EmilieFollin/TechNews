@@ -9,8 +9,11 @@
 namespace Core\controller;
 
 
+use Core\model\Helper;
+
 class AppController
 {
+    use Helper;
 
     private $_viewsparams;
 
@@ -42,6 +45,7 @@ class AppController
     protected function renderJson(array $param) {
         header('Content-Type: application/json');
         echo json_encpde($param);
+
     }
 
 

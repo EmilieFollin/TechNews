@@ -72,4 +72,41 @@ class Core extends AppController
          #   echo '<h1> JE SUIS SUR LA PAGE INSCRIPTION </h1>';
         #}
     }
+
+    /**
+     * Permet de générer l'affichage
+     * de la vue passé en paramètre.
+     * @param $view Vue à afficher.
+     * @param array $viewparam Données à passer à la vue.
+     */
+    protected function render($view, Array $viewparams = []) {
+
+        # Récupération et Affectation des Paramètres de la Vue
+        $this->_viewparams = $viewparams;
+
+        # Permet d'accéder au tableau directement dans des variables
+        extract($this->_viewparams);
+
+        # Chargement de la Vue
+        $view = PATH_VIEWS . '/' . $view . '.php';
+        if( file_exists($view) ) :
+
+            # Chargement du Header
+            include_once PATH_HEADER;
+
+            # Chargement de la Vue
+            include_once $view;
+
+            # Chargement du Footer
+            include_once PATH_FOOTER;
+
+        else :
+
+            $this->render('errors/404', [
+                'message' => 'Aucune vue correspondante'
+            ]);
+
+        endif;
+
+    }
 }
