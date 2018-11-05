@@ -24,3 +24,10 @@ class Autoloader {
     }
 
 }
+
+
+# function autoloader ($classe){ 
+#require 'classes/' . $classe . 'php';
+# }
+
+# spl_autoload_register('autoload');
